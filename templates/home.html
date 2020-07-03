@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    {% if not user.is_authenticated %}
+        <li><a href="accounts/register">Register</a></li>
+        <li><a href="accounts/login">Login</a></li>
+    {% else %}
+        <li> Hi, {{user.username}} </li> <br>
+        
+        {% if not user.is_staff %}
+        <button> <a href='accounts/all_tests_student'> Available tests </a> </button> <br> <br>
+        {% endif %}
+
+        {% if user.is_staff %}
+        <button> <a href='accounts/teacher'> Teachers' Section </a> </button> <br> <br>
+        {% endif %}
+
+        <li><a href="accounts/logout">Logout</a></li>
+    {% endif %}
+
+    <div> 
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}     
+    </div>
+
+</body>
+</html>

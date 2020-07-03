@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Student's Tests</title>
+</head>
+<body>
+    <h3> All tests for a particular student </h3> <hr>
+    
+    {% for test in tests %}
+    <form action='all_tests_student' method='POST'>
+
+        {% csrf_token %}
+
+        {{forloop.counter}}
+        <input type='hidden' name='test_id' value="{{test.id}}" readonly>
+
+        <input type='text' name='title' value="{{test.title}}" readonly>
+        <input type='text' name='subject' value='{{test.subject}}' readonly>
+        <input type='text' name='classs{{forloop.counter}}' value='{{test.classs}}' readonly>
+        
+        <input type='text' name='desc' value='{{test.desc}}' readonly>
+        <input type='text' name='starts_at' value="{{test.starts_at | date:'Y.m.d '}}{{test.starts_at | time:'H:i'}}" readonly>
+        <input type='text' name='ends_at' value="{{test.ends_at | date:'Y.m.d '}}{{test.ends_at | time:'H:i'}}" readonly>
+
+        <input type='text' name='author' value="{{test.author}}" readonly> <br> <br>
+
+        <input type="submit" name='SubmitTest' value="Start Test"> <br> <br>
+        <input type="submit" name='GetResult' value="Result"> <br>
+
+        <br> <hr> <br>
+    </form>
+    {% endfor %}
+
+</body>
+</html>

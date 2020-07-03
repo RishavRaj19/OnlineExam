@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+<body>
+    
+    <form action="test" method="POST">
+
+        {% csrf_token %}
+        Subject :
+        <input type='text' name="subject" required> <br>
+        Class :
+        <input type='text' name="classs" required> <br>
+        Title :
+        <input type='text' name="title" required> <br>
+        Description :
+        <input type='text' name="desc"> <br>
+        Starts at :
+        <input type='datetime-local' name="starts_at" required> <br>
+        Ends at :
+        <input type='datetime-local' name="ends_at" required> <br> <br>
+    
+        <input type='submit'> <br>
+    </form>
+
+    <div>
+        {% for message in messages %}
+        toastr.{{ message.tags }}('{{ message }}')
+        {% endfor %}
+    </div>
+
+</body>
+</html>

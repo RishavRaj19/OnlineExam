@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ques-Ans</title>
+</head>
+<body>
+    <h3> Ques-Ans Pair </h3>
+
+    <form action="ques_ans" method="POST">
+
+        {% csrf_token %}
+
+        Question :
+        <input type="text" name='ques' required> <br>
+
+        Option1 :
+        <input type="text" name='op1' required> <br>
+
+        Option2 :
+        <input type="text" name='op2' required> <br>
+
+        Option3 :
+        <input type="text" name='op3' required> <br>
+
+        Option4 :
+        <input type="text" name='op4' required> <br>
+        
+        Select a correct option ? 
+        <select name='op' required>
+            <option value="op1"> Option 1 </option>
+            <option value="op2"> Option 2 </option>
+            <option value="op3"> Option 3 </option>
+            <option value="op4"> Option 4 </option>
+        </select>
+        <br>
+
+        <input type='submit' name='button1' value="Save and Continue to Add Questions">
+        <input type='submit' name='button2' value='Save and Finish'>
+
+
+    </form>
+
+    <div>
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    </div>
+
+</body>
+</html>

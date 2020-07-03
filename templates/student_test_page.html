@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Conduct Test </title>
+</head>
+<body>
+    <h3> Student test page </h3>
+
+    <form action="startteststudent_test_page" method="POST">
+
+        {% csrf_token %}
+        <input type="hidden" name='test_id' value='{{test_id}}'>
+        <input type="hidden" name="no_of_ques" value="{{ques_ans_set|length}}">
+
+        {% for q_a in ques_ans_set %}
+        <hr>
+        Q{{forloop.counter}} :
+        <input type="text" name='ques{{forloop.counter}}' value='{{q_a.label}}' size="100" height="40"> <br>
+        <input type="hidden" name='ques_id{{forloop.counter}}' value='{{q_a.id}}'>
+
+        <div>
+        A. :
+        <input type="radio" name='op{{forloop.counter}}' value='{{q_a.op1}}'> {{q_a.op1}} <br>
+
+        B. :
+        <input type="radio" name='op{{forloop.counter}}' value='{{q_a.op2}}'> {{q_a.op2}} <br>
+
+        C. :
+        <input type="radio" name='op{{forloop.counter}}' value='{{q_a.op3}}'> {{q_a.op3}} <br>
+
+        D. :
+        <input type="radio" name='op{{forloop.counter}}' value='{{q_a.op4}}'> {{q_a.op4}}
+        </div>
+        <br> <br>
+
+        {% endfor %}
+
+        <hr>
+        <input type='submit' value="Submit Test">
+
+    </form>
+
+    <div>
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    </div>
+
+</body>
+</html>

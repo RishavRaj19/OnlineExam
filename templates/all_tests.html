@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> All tests</title>
+</head>
+<body>
+    <h3> All tests </h3>
+
+    <hr>
+    {% for test in tests %}
+    <h4> {{test.id}} </h4>
+    {{test.title}}
+    {{test.subject}}
+    {{test.classs}}
+    {{test.desc}}
+    {{test.date}}
+    {{test.starts_at}}
+    {{test.ends_at}}
+    {{test.author}}
+    <br> <hr>
+    {% endfor %}
+
+</body>
+</html>

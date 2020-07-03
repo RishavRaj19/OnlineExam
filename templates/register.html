@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <h3> Registration </h3> <br>
+    
+    <form action='register' method="POST">
+
+        {% csrf_token %}
+        <input type='checkbox' id='isTeacher' name='isTeacher'>
+        <label for='isTeacher'> Are you an Admin ? </label> <br>
+
+        <input type="text" name='first_name' placeholder="First Name" required> <br>
+        <input type='text' name='last_name' placeholder="Last name"> <br>
+        <input type="text" name='username' placeholder="Username" required> <br>
+        <input type='email' name='email' placeholder="Email"> <br>
+
+        <input type="text" name='classs' placeholder="Class"> <br>
+        <input type='text' name='section' placeholder="Section"> <br>
+        <input type="text" name='roll_no' placeholder="Roll No"> <br>
+
+        <input type='text' name='mobile_no' placeholder="Mobile No"> <br>    
+        <input type="text" name='school_code' placeholder="School Code" required> <br>
+
+        <input type='password' name='password1' placeholder="Password"> <br>
+        <input type='password' name='password2' placeholder="Confirm Password"> <br> <br>
+
+        <input type='Submit'>
+
+    </form>
+
+    <div>
+        {% for message in messages %}
+            <h4> {{message}} <h4>
+        {% endfor %}
+    </div>
+    
+
+
+</body>
+</html>
